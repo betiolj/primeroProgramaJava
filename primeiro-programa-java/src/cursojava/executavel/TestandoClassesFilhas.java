@@ -18,17 +18,21 @@ public class TestandoClassesFilhas {
 		diretor.setNome("João");
 		diretor.setIdade(50);
 		
-		Secretario secretatrio = new Secretario();
-		secretatrio.setExperiecnia("Administração");
-		secretatrio.setNome("Marco");
-		secretatrio.setIdade(45);
+		Secretario secretario = new Secretario();
+		secretario.setExperiecnia("Administração");
+		secretario.setNome("Marco");
+		secretario.setIdade(45);
 		
 		System.out.println(aluno);
 		System.out.println(diretor);
-		System.out.println(secretatrio);
+		System.out.println(secretario);
 		
 		System.out.println(aluno.pessoaMaiorIdade() + " - " + aluno.msgMaiorIdade());
 		System.out.println(diretor.pessoaMaiorIdade());
-		System.out.println(secretatrio.pessoaMaiorIdade());
+		System.out.println(secretario.pessoaMaiorIdade());
+		
+		System.out.println("Salario do aluno é = "+ aluno.salario());
+		System.out.println("Salario do diretor é = "+ diretor.salario());
+		System.out.println("Salario do secretario é = "+ secretario.salario());
 	}
 }
