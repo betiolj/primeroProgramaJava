@@ -25,5 +25,12 @@ public class Secretario extends Pessoa{
 		this.experiecnia = experiecnia;
 	}
 	
+	@Override
+	public String toString() {
+		return "Secretario [registro=" + registro + ", nivelCargo=" + nivelCargo + ", experiecnia=" + experiecnia
+				+ ", nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
+				+ registroGeral + ", numeroCPF=" + numeroCPF + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai + "]";
+	}
+	
 	
 }
