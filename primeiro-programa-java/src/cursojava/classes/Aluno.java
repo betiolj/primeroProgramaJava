@@ -5,19 +5,11 @@ import java.util.List;
 
 import cursojava.constantes.StatusAluno;
 
-public class Aluno {
+public class Aluno extends Pessoa{
 	/* Esses são os atributos do Aluno */
-	private String nome;
-	private int idade;
-	private String dataNascimento;
-	private String registroGeral;
-	private String numeroCPF;
-	private String nomeMae;
-	private String nomePai;
 	private String dataMatricula;
 	private String nomeEscola;
 	private String serieMatriculado;
-
 	private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 	
 	public void setDisciplinas(List<Disciplina> disciplinas) {
@@ -33,12 +25,12 @@ public class Aluno {
 	}
 
 	public Aluno(String nomePadrao) {
-		nome = nomePadrao;
+		super.nome = nomePadrao;
 	}
 
 	public Aluno(String nomePadrao, int idadePadrao) {
-		nome = nomePadrao;
-		idade = idadePadrao;
+		super.nome = nomePadrao;
+		super.idade = idadePadrao;
 	}
 
 	/* SETTERS E GUETTER */
@@ -50,11 +42,11 @@ public class Aluno {
 	}
 
 	public String getNome() {
-		return nome;
+		return super.nome;
 	}
 
 	public int getIdade() {
-		return idade;
+		return super.idade;
 	}
 
 	public void setIdade(int idade) {
@@ -78,7 +70,7 @@ public class Aluno {
 	}
 
 	public String getNumeroCPF() {
-		return numeroCPF;
+		return super.numeroCPF;
 	}
 
 	public void setNumeroCPF(String numeroCPF) {
@@ -86,7 +78,7 @@ public class Aluno {
 	}
 
 	public String getNomeMae() {
-		return nomeMae;
+		return super.nomeMae;
 	}
 
 	public void setNomeMae(String nomeMae) {
@@ -94,7 +86,7 @@ public class Aluno {
 	}
 
 	public String getNomePai() {
-		return nomePai;
+		return super.nomePai;
 	}
 
 	public void setNomePai(String nomePai) {
