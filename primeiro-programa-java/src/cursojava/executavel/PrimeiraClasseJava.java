@@ -115,7 +115,7 @@ public class PrimeiraClasseJava {
 		}
 	}
 		else {
-			JOptionPane.showMessageDialog(null,"login ou senha errado");
+			JOptionPane.showMessageDialog(null,"login ou senha errado!");
 	}
 	}
 }
