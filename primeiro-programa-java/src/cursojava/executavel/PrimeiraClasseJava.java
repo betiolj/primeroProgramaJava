@@ -19,8 +19,10 @@ public class PrimeiraClasseJava {
 		String login = JOptionPane.showInputDialog("Informe o Login");
 		String senha = JOptionPane.showInputDialog("Informe a Senha");
 		
+		PermitirAcesso permitirAcesso = new Secretario(login, senha);
 		
-		if(new Secretario().autenticar(login, senha)) {
+		
+		if(permitirAcesso.autenticar()) {
 
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		
