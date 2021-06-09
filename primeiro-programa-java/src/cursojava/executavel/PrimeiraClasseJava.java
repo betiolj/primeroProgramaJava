@@ -25,7 +25,7 @@ public class PrimeiraClasseJava {
 					.autenticar()) { /* vou travar o contrato para quem realmente tem o contrato */
 
 				//List<Aluno> alunos = new ArrayList<Aluno>();
-				 List<Aluno> alunos = null;
+				List<Aluno> alunos = null;
 
 				/*
 				 * HashMap é uma lista que dentro tem uma chave que identifica uma sequencia de
@@ -129,8 +129,23 @@ public class PrimeiraClasseJava {
 				JOptionPane.showMessageDialog(null, "login ou senha errado");
 			}
 		} catch (Exception e) {
+			
+			StringBuilder saida = new StringBuilder();
+			
 			e.printStackTrace(); /*imprime erro no console Java*/
-			JOptionPane.showMessageDialog(null, "Erro ao processsar notas");
+			
+			/*Mensagem do erro ou causa*/
+			System.out.println("Mensagem:  " + e.getMessage());
+			
+			for(int i = 0 ; i < e.getStackTrace().length; i++) {
+				saida.append("\n Classe de erro: " + e.getStackTrace()[i].getClassName());
+				saida.append("\n Metodo de erro: " + e.getStackTrace()[i].getMethodName());
+				saida.append("\n Linha de erro: " + e.getStackTrace()[i].getLineNumber());
+				saida.append("\n Class: " + e.getClass().getName());
+			}
+
+			
+			JOptionPane.showMessageDialog(null, "Erro ao processsar notas"+ saida.toString());
 		}
 
 	}
