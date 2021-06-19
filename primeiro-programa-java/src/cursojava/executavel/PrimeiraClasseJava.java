@@ -1,6 +1,7 @@
 package cursojava.executavel;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+import curso.java.excecao.ExcecaoProcessarNota;
 import cursojava.classes.Aluno;
 import cursojava.classes.Diretor;
 import cursojava.classes.Disciplina;
@@ -18,18 +20,17 @@ public class PrimeiraClasseJava {
 
 	public static void main(String[] args) {
 
-		try {
-			/*
-			File fil = new File("C:\\Users\\klebe\\Desktop\\lines.txt");
-			Scanner scanner = new Scanner(fil);
-			*/
+		try {	
+			
+			lerArquivo();
+			
 			String login = JOptionPane.showInputDialog("Informe o Login");
 			String senha = JOptionPane.showInputDialog("Informe a Senha");
 
 			if (new FuncaoAutenticacao(new Diretor(login, senha))
 					.autenticar()) { /* vou travar o contrato para quem realmente tem o contrato */
 
-				//List<Aluno> alunos = new ArrayList<Aluno>();
+				// List<Aluno> alunos = new ArrayList<Aluno>();
 				List<Aluno> alunos = new ArrayList<Aluno>();
 
 				/*
@@ -44,9 +45,9 @@ public class PrimeiraClasseJava {
 					/* aluno1 é um referencia para o objeto Aluno */
 
 					String nome = JOptionPane.showInputDialog("Qual o nome do aluno " + qtd + "?");
-					String idade = JOptionPane.showInputDialog("Qual a idade do aluno?"); 
-					 /*String
-					 * dataNascimento =
+					String idade = JOptionPane.showInputDialog("Qual a idade do aluno?");
+					/*
+					 * String dataNascimento =
 					 * JOptionPane.showInputDialog("Qual a data de nascimento do aluno?"); String rg
 					 * = JOptionPane.showInputDialog("Qual o RG do aluno?"); String cpf =
 					 * JOptionPane.showInputDialog("Qual o CPF do aluno?"); String nomeMae =
@@ -62,7 +63,7 @@ public class PrimeiraClasseJava {
 
 					aluno1.setNome(nome);
 					aluno1.setIdade(Integer.valueOf(idade));
-					/*					 
+					/*
 					 * aluno1.setDataNascimento(dataNascimento); aluno1.setRegistroGeral(rg);
 					 * aluno1.setNumeroCPF(cpf); aluno1.setNomeMae(nomeMae);
 					 * aluno1.setNomePai(nomePai); aluno1.setDataMatricula(dataMatriucula);
@@ -134,35 +135,47 @@ public class PrimeiraClasseJava {
 				JOptionPane.showMessageDialog(null, "login ou senha errado");
 			}
 		} catch (NumberFormatException e) {
-			
+
 			StringBuilder saida = new StringBuilder();
-			
-			e.printStackTrace(); /*imprime erro no console Java*/
-			
-			/*Mensagem do erro ou causa*/
+
+			e.printStackTrace(); /* imprime erro no console Java */
+
+			/* Mensagem do erro ou causa */
 			System.out.println("Mensagem:  " + e.getMessage());
-			
-			for(int i = 0 ; i < e.getStackTrace().length; i++) {
+
+			for (int i = 0; i < e.getStackTrace().length; i++) {
 				saida.append("\n Classe de erro: " + e.getStackTrace()[i].getClassName());
 				saida.append("\n Metodo de erro: " + e.getStackTrace()[i].getMethodName());
 				saida.append("\n Linha de erro: " + e.getStackTrace()[i].getLineNumber());
 				saida.append("\n Class: " + e.getClass().getName());
 			}
 
-			
-			JOptionPane.showMessageDialog(null, "Erro de conversão de numero"+ saida.toString());
-			
-		}catch (NullPointerException e) {
+			JOptionPane.showMessageDialog(null, "Erro de conversão de numero" + saida.toString());
+
+		} catch (NullPointerException e) {
 			JOptionPane.showMessageDialog(null, "Erro de null pointer excepiton" + e.getClass());
-		
-		}catch (Exception e) { /* tratando erros gernéricos que não prevemos */
+
+		} catch (ExcecaoProcessarNota e) { /* tratando erros gernéricos que não prevemos */
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro inesperado: "+ e.getClass().getName());
-		
-		}finally { /*sempre é executado ocorrendo erros ou não*/
-			/*sempre é usando quando se precisar executar um processo acontecendo erro ou não*/
+			JOptionPane.showMessageDialog(null, "Erro da exceção customizada: " + e.getClass().getName());
+
+		} finally { /* sempre é executado ocorrendo erros ou não */
+			/*
+			 * sempre é usando quando se precisar executar um processo acontecendo erro ou
+			 * não
+			 */
 			JOptionPane.showMessageDialog(null, "Este é o bloco Finally");
-			
+
+		}
+
+	}
+	
+	public static void lerArquivo() throws ExcecaoProcessarNota{
+		try {
+		File fil = new File("C:\\Users\\klebe\\Desktop\\lines.txt");
+		Scanner scanner = new Scanner(fil);
+		}catch (FileNotFoundException e) {
+			throw new ExcecaoProcessarNota(e.getMessage());
 		}
 
 	}
