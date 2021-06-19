@@ -20,10 +20,10 @@ public class PrimeiraClasseJava {
 
 	public static void main(String[] args) {
 
-		try {	
-			
+		try {
+
 			lerArquivo();
-			
+
 			String login = JOptionPane.showInputDialog("Informe o Login");
 			String senha = JOptionPane.showInputDialog("Informe a Senha");
 
@@ -134,7 +134,7 @@ public class PrimeiraClasseJava {
 			} else {
 				JOptionPane.showMessageDialog(null, "login ou senha errado");
 			}
-		} catch (NumberFormatException e) {
+		} catch (Exception e) {
 
 			StringBuilder saida = new StringBuilder();
 
@@ -152,14 +152,6 @@ public class PrimeiraClasseJava {
 
 			JOptionPane.showMessageDialog(null, "Erro de conversão de numero" + saida.toString());
 
-		} catch (NullPointerException e) {
-			JOptionPane.showMessageDialog(null, "Erro de null pointer excepiton" + e.getClass());
-
-		} catch (ExcecaoProcessarNota e) { /* tratando erros gernéricos que não prevemos */
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro da exceção customizada: " + e.getClass().getName());
-
-		} finally { /* sempre é executado ocorrendo erros ou não */
 			/*
 			 * sempre é usando quando se precisar executar um processo acontecendo erro ou
 			 * não
@@ -169,15 +161,11 @@ public class PrimeiraClasseJava {
 		}
 
 	}
-	
-	public static void lerArquivo() throws ExcecaoProcessarNota{
-		try {
+
+	public static void lerArquivo() throws FileNotFoundException {
+
 		File fil = new File("C:\\Users\\klebe\\Desktop\\lines.txt");
 		Scanner scanner = new Scanner(fil);
-		}catch (FileNotFoundException e) {
-			throw new ExcecaoProcessarNota(e.getMessage());
-		}
-
 	}
 
 }
