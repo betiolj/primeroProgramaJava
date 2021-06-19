@@ -158,6 +158,11 @@ public class PrimeiraClasseJava {
 		}catch (Exception e) { /* tratando erros gernéricos que não prevemos */
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Erro inesperado: "+ e.getClass().getName());
+		
+		}finally { /*sempre é executado ocorrendo erros ou não*/
+			/*sempre é usando quando se precisar executar um processo acontecendo erro ou não*/
+			JOptionPane.showMessageDialog(null, "Este é o bloco Finally");
+			
 		}
 
 	}
