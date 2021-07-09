@@ -27,8 +27,7 @@ public class PrimeiraClasseJava {
 			String login = JOptionPane.showInputDialog("Informe o Login");
 			String senha = JOptionPane.showInputDialog("Informe a Senha");
 
-			if (new FuncaoAutenticacao(new Diretor(login, senha))
-					.autenticar()) { /* vou travar o contrato para quem realmente tem o contrato */
+			if (new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) { /* vou travar o contrato para quem realmente tem o contrato */
 
 				// List<Aluno> alunos = new ArrayList<Aluno>();
 				List<Aluno> alunos = new ArrayList<Aluno>();
@@ -165,7 +164,7 @@ public class PrimeiraClasseJava {
 	public static void lerArquivo() throws FileNotFoundException {
 
 		File fil = new File("C:\\Users\\klebe\\Desktop\\lines.txt");
-		Scanner scanner = new Scanner(fil);
+		//Scanner scanner = new Scanner(fil);
 	}
 
 }
