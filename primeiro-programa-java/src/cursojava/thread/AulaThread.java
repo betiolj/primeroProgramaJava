@@ -6,7 +6,7 @@ public class AulaThread {
 	
 	public static void main(String[] args) throws InterruptedException {
 		
-		/*Thread processando em paralelo*/
+		/*Thread processando em paralelo do envio de email*/
 		new Thread() {
 			
 			public void run() {/* executa o que nós queremos*/
@@ -22,6 +22,34 @@ public class AulaThread {
 					/*Execução leva 1 segunda em cada execução*/
 					try {
 						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				/*fim do codigo em paralelo*/
+				
+			};
+			
+		}.start();/*liga a Thread que fica processando paralelamente*/
+		
+		/*=================================== DIVISÃO DAS THREADS ============================*/
+		
+		/*Thread processando em paralelo do envio de nota fiscal*/
+		new Thread() {
+			
+			public void run() {/* executa o que nós queremos*/
+				/*codigo da rotina*/
+				
+
+				/*codigo da rotina que eu quero executar em paralelo*/
+				for(int pos = 0; pos <  10; pos++) {			
+				
+					/*enviar com tempo de parada ou com um tempo determinado*/
+					System.out.println("Executando rotina, envio de nota fiscal");
+					
+					/*Execução leva 1 segunda em cada execução*/
+					try {
+						Thread.sleep(3000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
