@@ -13,37 +13,44 @@ public class ImplementacaoFilaThread extends Thread {
 
 	@Override
 	public void run() {
-		Iterator iteracao = pilha_fila.iterator();
+
+		System.out.println("Fila rodando");
+
 		
-		synchronized (iteracao) { /* bloquear o acesso a esta lista por outros porcessos */
 
-			while (iteracao.hasNext()) { /* Enquanto conter dados na lista ele ira processar */
+		while (true) {
+			
+			Iterator iteracao = pilha_fila.iterator();
 
-				ObjetoFilaThread processar = (ObjetoFilaThread) iteracao.next();
-				/* aqui você chama os processo demorados do java */
-				/* Processar 10 mil notas fiscal */
-				
-				System.out.println("---------------------------------------------");
-				System.out.println(processar.getNome());
-				System.out.println(processar.getEmail()); 
-				System.out.println("");
-				iteracao.remove();
+			synchronized (pilha_fila) { /* bloquear o acesso a esta lista por outros porcessos */
 
-				try {
-					Thread.sleep(100); /* tempo para descarga de memoria */
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				while (iteracao.hasNext()) { /* Enquanto conter dados na lista ele ira processar */
+
+					ObjetoFilaThread processar = (ObjetoFilaThread) iteracao.next();
+					/* aqui você chama os processo demorados do java */
+					/* Processar 10 mil notas fiscal */
+
+					System.out.println("---------------------------------------------");
+					System.out.println(processar.getNome());
+					System.out.println(processar.getEmail());
+					iteracao.remove();
+
+					try {
+						Thread.sleep(1000); /* tempo para descarga de memoria */
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
+
+			}
+
+			try {
+				Thread.sleep(1000);/* processou toda a lista, dar um tempo para limpesa de memoria */
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 		}
-
-		try {
-			Thread.sleep(1000);/* processou toda a lista, dar um tempo para limpesa de memoria */
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
-
 }
