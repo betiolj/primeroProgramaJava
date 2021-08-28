@@ -28,7 +28,7 @@ public class TelaTimeThread extends JDialog { /* jDialog SWING tela */
 
 	private JButton jButton = new JButton("Gerar Lote");
 	private JButton jButton2 = new JButton("Stop");
-	
+
 	private ImplementacaoFilaThread fila = new ImplementacaoFilaThread();
 
 	/* Construtor */
@@ -80,12 +80,20 @@ public class TelaTimeThread extends JDialog { /* jDialog SWING tela */
 			@Override
 			public void actionPerformed(ActionEvent e) { /* Executa o click do botão */
 				
-				ObjetoFilaThread filaThread = new ObjetoFilaThread();
-				filaThread.setNome(mostraTempo.getText());
-				filaThread.setEmail(mostraTempo2.getText());
-				
-				fila.add(filaThread);
+				if(fila == null) {
+					fila = new ImplementacaoFilaThread();
+					fila.start();
+					
+				}
 
+				for (int qtd = 0; qtd <= 10; qtd++) { /*simulando 10 envidos em massa*/
+
+					ObjetoFilaThread filaThread = new ObjetoFilaThread();
+					filaThread.setNome(mostraTempo.getText());
+					filaThread.setEmail(mostraTempo2.getText()+  " - " + qtd);
+
+					fila.add(filaThread);
+				}
 			}
 		});
 
@@ -93,13 +101,15 @@ public class TelaTimeThread extends JDialog { /* jDialog SWING tela */
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				fila.stop();
+				fila = null;
+				
 
 			}
 		});
-		
 
 		fila.start();
-		
+
 		add(jPanel, BorderLayout.WEST);
 		/* sempre sera o ultimo comando */
 		setVisible(true); /* torna a tela visivel */
