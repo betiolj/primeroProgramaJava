@@ -26,6 +26,7 @@ public class ImplementacaoFilaThread extends Thread {
 				System.out.println("---------------------------------------------");
 				System.out.println(processar.getNome());
 				System.out.println(processar.getEmail()); 
+				System.out.println("");
 				iteracao.remove();
 
 				try {
