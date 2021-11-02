@@ -1,3 +1,5 @@
 Jose Silva;jose@email.com;40
 Maria Santos;maria@email.com;30
 Pedro Prado;pedro@email.com;50
+
+Mauro Souza;Mauro@email.com;60
