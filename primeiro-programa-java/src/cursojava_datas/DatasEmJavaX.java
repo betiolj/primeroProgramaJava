@@ -19,6 +19,7 @@ public class DatasEmJavaX {
 			dataBase = dataBase.plusMonths(1);
 			
 			System.out.println("Data do vencimento do Boleto: " + dataBase.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+			System.out.println("");
 		}
 	}
 
