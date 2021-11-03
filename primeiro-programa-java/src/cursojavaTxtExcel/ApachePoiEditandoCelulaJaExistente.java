@@ -10,7 +10,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-public class ApachePoiEditando {
+public class ApachePoiEditandoCelulaJaExistente {
 
 	public static void main(String[] args) throws Exception{ 
 		
@@ -27,10 +27,9 @@ public class ApachePoiEditando {
 		while(linhaIterator.hasNext()) { /*Enquanto tiver linha*/
 			Row linha = linhaIterator.next(); /*Dados das pessoas na linha*/
 			
-			int numeroCelulas = linha.getPhysicalNumberOfCells(); /*quantidade de celula*/
+			String valorCelula = linha.getCell(0).getStringCellValue();
 			
-			Cell cell = linha.createCell(numeroCelulas); /*Cria nova celula na linha*/
-			cell.setCellValue("2,444.44");
+			linha.getCell(0).setCellValue(valorCelula + " * valor gravado na aula");
 		}
 		
 		entrada.close();
